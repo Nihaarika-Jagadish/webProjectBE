@@ -1,0 +1,922 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "VSorts Admin Cluster Creation Endpoints",
+    "description": ""
+  },
+  "host": "localhost:3013",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes":["application/json"],
+  "produces": ["application/json"],
+  "tags":[  
+		{  
+			"name":"User",
+			"description":"Handles user registration and login."
+		},
+    {  
+			"name":"Roles",
+			"description":"Handles role creation."
+		},
+    {  
+			"name":"Organization",
+			"description":"Handle organization endpoints."
+		},
+    {  
+			"name":"VignetteContainer",
+			"description":"A vignette container is having the names of all the containers for vignettes."
+		},
+    {  
+			"name":"SurveyInformation",
+			"description":"Don't think this is being used anymore"
+		},
+    {  
+			"name":"AnswerType",
+			"description":"Answer options till now."
+		},
+    {  
+			"name":"FormContainers",
+			"description":"The pre survey, post survey and final feedback forms containers."
+		},
+    {  
+			"name":"FormQuestions",
+			"description":"The endpoint for the question creation of pre survey, post survey and final feedback."
+		},
+    {  
+			"name":"FormTypes",
+			"description":"The different types of forms: pre survey, post survey and final feedback"
+    },
+    {  
+			"name":"ClusterSteps",
+			"description":"The different steps in each cluster"
+    },
+    {  
+			"name":"VSortCluster",
+			"description":"Creating a package of all forms and vignettes called the VSort Cluster"
+    }
+	],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/": {
+      "get": {
+        "description": "",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/register": {
+      "post": {
+        "description": "",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "organization_id": {
+                  "example": "any"
+                },
+                "first_name": {
+                  "example": "any"
+                },
+                "last_name": {
+                  "example": "any"
+                },
+                "user_phone": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "profile_photo": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "description": "",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/role/": {
+      "post": {
+        "description": "",
+        "tags": ["Roles"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/organization/": {
+      "post": {
+        "description": "",
+        "tags": ["Organization"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "organization_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vignette/category": {
+      "post": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "category_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vignette/containerName": {
+      "post": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "container_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vignette/vignettesCreation": {
+      "post": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "container_id": {
+                  "example": "any"
+                },
+                "vignettes": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vignette/vignettesEdit": {
+      "put": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                },
+                "container_id": {
+                  "example": "any"
+                },
+                "vignettes": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vignette/unlockContainer": {
+      "post": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "locked": {
+                  "example": "any"
+                },
+                "container_id": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vignette/": {
+      "get": {
+        "description": "",
+        "tags": ["VignetteContainer"],
+        "parameters": [
+          {
+            "name": "container_id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/survey/": {
+      "post": {
+        "description": "",
+        "tags": ["SurveyInformation"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "free": {
+                  "example": "any"
+                },
+                "survey_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/survey/allSurveys": {
+      "get": {
+        "description": "",
+        "tags": ["SurveyInformation"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/answerTypes/": {
+      "post": {
+        "description": "",
+        "tags": ["AnswerType"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "answer_type": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["AnswerType"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/formContainers/createName": {
+      "post": {
+        "description": "",
+        "tags": ["FormContainers"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "form_type": {
+                  "example": "any"
+                },
+                "container_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/formContainers/getNames": {
+      "get": {
+        "description": "",
+        "tags": ["FormContainers"],
+        "parameters": [
+          {
+            "name": "form_type",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/formContainers/unlockContainer": {
+      "post": {
+        "description": "",
+        "tags": ["FormContainers"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "form_type": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "locked": {
+                  "example": "any"
+                },
+                "container_id": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/formQuestions/": {
+      "post": {
+        "description": "",
+        "tags": ["FormQuestions"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "example": "any"
+                },
+                "container_id": {
+                  "example": "any"
+                },
+                "form_type": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "tags": ["FormQuestions"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "example": "any"
+                },
+                "container_id": {
+                  "example": "any"
+                },
+                "form_type": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["FormQuestions"],
+        "parameters": [
+          {
+            "name": "form_type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "container_id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "tags": ["FormQuestions"],
+        "parameters": [
+          {
+            "name": "form_type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/formQuestions/clone": {
+      "post": {
+        "description": "",
+        "tags": ["FormQuestions"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "form_type": {
+                  "example": "any"
+                },
+                "container_type": {
+                  "example": "any"
+                },
+                "container_id": {
+                  "example": "any"
+                },
+                "container_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/formTypes/": {
+      "post": {
+        "description": "",
+        "tags": ["FormTypes"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "form_type": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["FormTypes"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/clusterSteps/": {
+      "post": {
+        "tags": ["ClusterSteps"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "example": "any"
+                },
+                "cluster_id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/clusterSteps/getSteps": {
+      "get": {
+        "description": "",
+        "tags": ["ClusterSteps"],
+        "parameters": [
+          {
+            "name": "cluster_id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vsortCluster/": {
+      "post": {
+        "description": "",
+        "tags": ["VSortCluster"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cluster_url": {
+                  "example": "any"
+                },
+                "cluster_name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["VSortCluster"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vsortCluster/allClusters": {
+      "get": {
+        "description": "",
+        "tags": ["VSortCluster"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
