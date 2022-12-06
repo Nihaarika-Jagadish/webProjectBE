@@ -1,0 +1,9 @@
+[SERVER_CONFIG]
+
+HOST = webprojectinstance.c7jwyddwy6dn.us-east-1.rds.amazonaws.com
+USER = admin
+PASSWORD = Wildcraft_98
+
+[DATABASE_CONFIG]
+DATABASE = testDB
+TABLE = figure_segmented_nipseval_test2007
